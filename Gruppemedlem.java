@@ -1,6 +1,10 @@
 /*
- * Even Holthe (s189124) <even.holthe@me.com>
- * Oblig 3 (DAPE1400) av s189124, s189153 og s189138
+ * Oblig 3 (DAPE1400) - forfattet av følgende
+ * studenter fra Anvendt datateknologi, 2. året:
+ * 
+ * Vegar Norman <s189153@stud.hioa.no> 
+ * Per Erik Finstad <s189138@stud.hioa.no>
+ * Even Holthe <s189124@stud.hioa.no>
  */
 public class Gruppemedlem {
 	// Datafelt
