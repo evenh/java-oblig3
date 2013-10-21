@@ -17,6 +17,6 @@ public class Student {
 		this.navn   = navn;
 		this.klasse = klasse;
 
-		// Gjør noe med antall obliger
+		// Her må det implementeres noe for antObliger
 	}
 }
