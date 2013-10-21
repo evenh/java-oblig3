@@ -7,5 +7,16 @@
  * Even Holthe <s189124@stud.hioa.no>
  */
 public class Student {
+	// Datafelter
+	private String navn;
+	private String klasse;
+	private Oblig[] levert;
 
+	// Konstruktør
+	public Student(String navn, String klasse, int antObliger){
+		this.navn   = navn;
+		this.klasse = klasse;
+
+		// Gjør noe med antall obliger
+	}
 }
