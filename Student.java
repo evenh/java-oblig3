@@ -34,4 +34,17 @@ public class Student {
 
 	public void innlevering(Oblig oppg){
 	}
+
+	public int ikkeGodkjent() {
+		int resultat = 0;
+
+		for (leveranse : this.levert) {
+			if (leveranse.getGodkjent() == false) {
+				resultat++;
+			}
+		}
+
+		return resultat;
+	}
+
 }
