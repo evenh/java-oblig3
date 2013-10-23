@@ -16,7 +16,9 @@ public class Student {
 	public Student(String navn, String klasse, int antObliger){
 		this.navn   = navn;
 		this.klasse = klasse;
+		this.levert = new Oblig[antObliger];
+	}
 
-		// Her må det implementeres noe for antObliger
+	public void innlevering(Oblig oppg){
 	}
 }
