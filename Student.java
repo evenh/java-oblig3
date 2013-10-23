@@ -38,13 +38,47 @@ public class Student {
 	public int ikkeGodkjent() {
 		int resultat = 0;
 
-		for (leveranse : this.levert) {
+		for (Oblig leveranse : this.levert) {
 			if (leveranse.getGodkjent() == false) {
 				resultat++;
 			}
 		}
 
 		return resultat;
+	}
+
+	public String toString() {
+		int manglende = 0;
+		String output = "";
+
+		output += "Navn: " + this.navn + "\n";
+		output += "Klasse: " + this.klasse + "\n";
+
+		for (int i = 0; i < this.levert.length; i++) {
+			String status = "";
+
+			if (this.levert[i].getGodkjent()) {
+				status = "godkjent";
+			}
+
+			else {
+				status = "ikke godkjent";
+				manglende++;
+			}
+
+			output += "Obligatorisk oppgave nr. " + this.levert[i].getObligNr() + " er " + status + "\n";
+		}
+
+		if (manglende > 0) {
+			output += navn + " kan ikke gå opp til eksamen.";
+		}
+
+		else {
+			output += navn + " kan gå opp til eksamen.";
+		}
+
+		return output;
+
 	}
 
 }
