@@ -19,6 +19,19 @@ public class Student {
 		this.levert = new Oblig[antObliger];
 	}
 
+	private int erRegistrert(int nr) {
+		int resultat = -1;
+
+		for (int i = 0; i < this.levert.length; i++) {
+			if (this.levert[i].getObligNr() == nr) {
+				resultat = i;
+				break;
+			}
+		}
+
+		return resultat;
+	}
+
 	public void innlevering(Oblig oppg){
 	}
 }
