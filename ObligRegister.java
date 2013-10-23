@@ -10,8 +10,10 @@ public class ObligRegister{
 	private Student[] studenter;
 	private int antallObliger;
 
-	//Konstruktør
+	// Konstruktør
 	public ObligRegister(int antStud, int antOblig){
-		//kode her..
+		this.studenter = new Student[antStud];
+		this.antallObliger = antOblig;
 	}
+
 }
