@@ -19,6 +19,18 @@ public class Student {
 		this.levert = new Oblig[antObliger];
 	}
 
+	// Utvidelse på eget initiativ:
+	// Andre klasser kan ikke sjekke på navn eller klasse når scope er satt til private.
+	// Laget derfor getters for disse.
+
+	public String getNavn() {
+		return this.navn;
+	}
+
+	public String getKlasse() {
+		return this.klasse;
+	}
+
 	private int erRegistrert(int nr) {
 		int resultat = -1;
 
