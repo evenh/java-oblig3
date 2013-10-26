@@ -107,7 +107,12 @@ public class ArbeidskravGUI extends JFrame implements ActionListener {
 	}
 
 	public void registrer() {
+		boolean erGodkjent = this.godkjent.isSelected();
+		int obligNummer = Integer.parseInt(this.obligNr.getText());
+		Gruppemedlem[] deltakere = this.lesGruppe();
+		Oblig o = new Oblig(deltakere, obligNummer, erGodkjent);
 
+		this.kartotek.registrer(o);
 	}
 
 	public void sjekkGodkjenning() {
