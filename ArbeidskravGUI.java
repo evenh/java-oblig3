@@ -97,7 +97,13 @@ public class ArbeidskravGUI extends JFrame implements ActionListener {
 
 
 	private Gruppemedlem[] lesGruppe() {
-		
+		Gruppemedlem[] resultat = new Gruppemedlem[this.navn.length];
+
+		for (int i = 0; i < this.navn.length; i++) {
+			resultat[i] = new Gruppemedlem(this.navn[i].getText(), this.klasse[i].getText());
+		}
+
+		return resultat;
 	}
 
 	public void registrer() {
