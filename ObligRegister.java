@@ -38,6 +38,7 @@ public class ObligRegister{
 
 			if (!finnes) {
 				Student ny = new Student(oppg.getDeltakere()[i].getNavn(), oppg.getDeltakere()[i].getKlasse(), this.antallObliger);
+				this.studenter.add(ny);
 				ny.innlevering(oppg);
 			}
 		}
