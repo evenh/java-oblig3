@@ -23,4 +23,24 @@ public class ObligRegister{
 		studenter.add(ny);
 	}
 
+
+	public void registrer(Oblig oppg) {
+		for (int i = 0; i < oppg.getDeltakere().length; i++) {
+			String navn = oppg.getDeltakere()[i].getNavn();
+			boolean finnes = false;
+
+			for (Student s: studenter) {
+				if (s.getNavn() == navn) {
+					s.innlevering(oppg);
+					finnes = true;
+				}
+			}
+
+			if (!finnes) {
+				Student ny = new Student(oppg.getDeltakere()[i].getNavn(), oppg.getDeltakere()[i].getKlasse(), 4);
+				ny.innlevering(oppg);
+			}
+		}
+	}
+
 }
