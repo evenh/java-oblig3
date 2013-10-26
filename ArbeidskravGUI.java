@@ -8,22 +8,22 @@ public class ArbeidskravGUI extends JFrame implements ActionListener {
 	// Attributter
 	//============
 
-	private JTextField 	person,
-							 	obligNr,
-							 	kl;
+	private JTextField 		person,
+							obligNr,
+							kl;
 
-	private JTextField[] navn,
-								klasse;
+	private JTextField[] 	navn,
+						 	klasse;
 
 	private JButton 		reg,
-						 		sjekk,
-						 		status;
+						 	sjekk,
+						 	status;
 
-	private JTextArea 	output;
+	private JTextArea 		output;
 
-	private ObligRegister kartotek;
+	private ObligRegister 	kartotek;
 
-	private JCheckBox 	godkjent;
+	private JCheckBox 		godkjent;
 
 
 	// Konstruktør
