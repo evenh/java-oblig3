@@ -94,7 +94,7 @@ public class ArbeidskravGUI extends JFrame implements ActionListener {
 		c.add(new JScrollPane(output));
 
 		// Innstillinger for JFrame
-		setSize(420, 800);
+		setSize(440, 800);
 		setVisible(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -125,14 +125,14 @@ public class ArbeidskravGUI extends JFrame implements ActionListener {
 		boolean funnet = false;
 
 		for (Student s : this.kartotek.getStudenter()) {
-			if (s.getNavn() == sjekkNavn) {
+			if (sjekkNavn.equals(s.getNavn()) ) {
 				this.output.append(s.toString());
 				funnet = true;
 			}
 		}
 
 		if (!funnet) {
-			this.output.append("Beklager, studenten ble ikke funnet.");
+			this.output.append("Beklager, studenten ble ikke funnet.\n");
 		}
 	}
 
@@ -140,7 +140,7 @@ public class ArbeidskravGUI extends JFrame implements ActionListener {
 		String sjekkKlasse = this.kl.getText();
 
 		for (Student s : this.kartotek.getStudenter()) {
-			if (s.getKlasse() == sjekkKlasse) {
+			if (sjekkKlasse.equals(s.getKlasse())) {
 				this.output.append(s.toString());
 			}
 		}
@@ -149,14 +149,17 @@ public class ArbeidskravGUI extends JFrame implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		switch(e.getActionCommand()){
 			case "registrer":
+				System.out.println("[INFO] Registrerer student...");
 				this.registrer();
 			break;
 
 			case "sjekk":
+				System.out.println("[INFO] Sjekker for godkjent oblig...");
 				this.sjekkGodkjenning();
 			break;
 
 			case "status":
+				System.out.println("[INFO] Sjekker status...");
 				this.skrivListe();
 			break;
 		}
