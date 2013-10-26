@@ -65,6 +65,11 @@ public class ArbeidskravGUI extends JFrame implements ActionListener {
 		this.sjekk.addActionListener(this);
 		this.status.addActionListener(this);
 
+		// Hva skal gjøres?
+		this.reg.setActionCommand("registrer");
+		this.sjekk.setActionCommand("sjekk");
+		this.status.setActionCommand("status");
+
 		// Lag en Container med FlowLayout
 		Container c = getContentPane();
 		c.setLayout(new FlowLayout());
@@ -142,7 +147,19 @@ public class ArbeidskravGUI extends JFrame implements ActionListener {
 	}
 
 	public void actionPerformed(ActionEvent e) {
+		switch(e.getActionCommand()){
+			case "registrer":
+				this.registrer();
+			break;
 
+			case "sjekk":
+				this.sjekkGodkjenning();
+			break;
+
+			case "status":
+				this.skrivListe();
+			break;
+		}
 	}
 
 }
