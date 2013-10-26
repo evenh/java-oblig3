@@ -27,13 +27,23 @@ public class ObligRegister {
 		studenter.add(ny);
 	}
 
+	public int posisjon(String navn){
+		int teller = 0;
+		for(Student s : this.studenter){
+			if(s.getNavn() == navn){
+				return teller;
+			} else {
+				teller++;
+			}
+		}
+	}
 
 	public void registrer(Oblig oppg) {
 		for (int i = 0; i < oppg.getDeltakere().length; i++) {
 			String navn = oppg.getDeltakere()[i].getNavn();
 			boolean finnes = false;
 
-			for (Student s : studenter) {
+			for (Student s : this.studenter) {
 				if (s.getNavn() == navn) {
 					s.innlevering(oppg);
 					finnes = true;
@@ -48,7 +58,7 @@ public class ObligRegister {
 	}
 
 	public String godkjent(String navn) {
-		for (Student s : studenter) {
+		for (Student s : this.studenter) {
 			if (s.getNavn() == navn) {
 				return s.toString();
 			}
