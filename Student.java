@@ -82,7 +82,7 @@ public class Student {
 		}
 
 		if (manglende > 0) {
-			output += navn + " kan ikke gå opp til eksamen.";
+			output += navn + " kan ikke gå opp til eksamen. Mangler " + manglende + " oppgaver for å gå opp.";
 		}
 
 		else {
