@@ -9,7 +9,11 @@
 
 import java.util.ArrayList;
 
-public class ObligRegister{
+public class ObligRegister {
+	// https://github.com/evenh/java-oblig3/issues/21
+	// 
+	// Gått fra Array til ArrayList, da det ikke er mulig
+	// å "ta høyde" (oppgaveteksten) for at det er plass i et array
 	private ArrayList<Student> studenter;
 	private int antallObliger;
 
@@ -29,7 +33,7 @@ public class ObligRegister{
 			String navn = oppg.getDeltakere()[i].getNavn();
 			boolean finnes = false;
 
-			for (Student s: studenter) {
+			for (Student s : studenter) {
 				if (s.getNavn() == navn) {
 					s.innlevering(oppg);
 					finnes = true;
