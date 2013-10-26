@@ -43,14 +43,11 @@ public class ObligRegister{
 		}
 	}
 
-	public void godkjent(String navn) {
+	public String godkjent(String navn) {
 		for (Student s : studenter) {
-
-			if (s.getNavn == navn) {
+			if (s.getNavn() == navn) {
 				return s.toString();
-				break;
 			}
-
 		}
 
 		return "Ingen data funnet.";
