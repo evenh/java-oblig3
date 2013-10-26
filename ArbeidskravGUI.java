@@ -103,7 +103,11 @@ public class ArbeidskravGUI extends JFrame implements ActionListener {
 		c.add(new JScrollPane(output));
 
 		// Innstillinger for JFrame
-		setSize(440, 800);
+		if("Mac OS X".equals( System.getProperty("os.name"))){
+			setSize(440, 800);
+		} else {
+			setSize(420, 800);
+		}
 		setVisible(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
