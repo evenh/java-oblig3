@@ -68,4 +68,28 @@ public class ObligRegister {
 		return "Ingen data funnet.";
 	}
 
+
+	public String[] statusListe(String klasse) {
+
+		int studentCounter = 0;
+
+		for (Student s : this.studenter) {
+			if (s.getKlasse() == klasse) {
+				studentCounter++;
+			}
+		}
+
+		String[] resultat = new String[studentCounter + 1];
+		int indeks = 0;
+
+		for (Student s : this.studenter) {
+			if (s.getKlasse() == klasse) {
+				resultat[indeks] = s.toString();
+				indeks++;
+			}
+		}
+
+		return resultat;
+	}
+
 }
