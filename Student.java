@@ -45,6 +45,25 @@ public class Student {
 	}
 
 	public void innlevering(Oblig oppg){
+		// Hvis levert tidligere
+		if((erRegistrert(oppg.getObligNr()) != -1)){
+			// Erstatt oppgaven hvis den ikke var godkjent
+			int obligNr = erRegistrert(oppg.getObligNr());
+			if(!this.levert[obligNr].getGodkjent()){
+				this.levert[obligNr] = oppg;
+			}
+		// Den har ikke vært levert tidligere, lever
+		} else {
+			// Finn ut hvilken plass vi skal lagre på
+			int teller = 0;
+			for(int i=0;i<this.levert.length;i++){
+				if(this.levert[i] != null){
+					teller++;
+				}
+			}
+			// Lagre
+			this.levert[teller+1] = oppg;
+		}
 	}
 
 	public int ikkeGodkjent() {

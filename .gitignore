@@ -6,6 +6,9 @@ Desktop.ini
 # Javac
 *.class
 
+# Testklasser i utviklingen
+*Test.java
+
 # Package Files #
 *.jar
 *.war
