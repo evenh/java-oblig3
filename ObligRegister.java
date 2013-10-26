@@ -32,10 +32,10 @@ public class ObligRegister {
 		for(Student s : this.studenter){
 			if(s.getNavn() == navn){
 				return teller;
-			} else {
-				teller++;
 			}
+			teller++;
 		}
+		return -1;
 	}
 
 	public void registrer(Oblig oppg) {
