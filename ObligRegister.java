@@ -49,7 +49,7 @@ public class ObligRegister {
 			boolean finnes = false;
 
 			for (Student s : this.studenter) {
-				if (s.getNavn() == navn) {
+				if (navn.equals(s.getNavn())) {
 					s.innlevering(oppg);
 					finnes = true;
 				}
@@ -58,14 +58,18 @@ public class ObligRegister {
 			if (!finnes) {
 				Student ny = new Student(oppg.getDeltakere()[i].getNavn(), oppg.getDeltakere()[i].getKlasse(), this.antallObliger);
 				this.studenter.add(ny);
-				ny.innlevering(oppg);
+				if(this.studenter.size() == 0){
+					this.studenter.get(this.studenter.size()).innlevering(oppg);
+				} else {
+					this.studenter.get(this.studenter.size()-1).innlevering(oppg);
+				}
 			}
 		}
 	}
 
 	public String godkjent(String navn) {
 		for (Student s : this.studenter) {
-			if (s.getNavn() == navn) {
+			if (navn.equals(s.getNavn())) {
 				return s.toString();
 			}
 		}
@@ -79,7 +83,7 @@ public class ObligRegister {
 		int studentCounter = 0;
 
 		for (Student s : this.studenter) {
-			if (s.getKlasse() == klasse) {
+			if (klasse.equals(s.getKlasse())) {
 				studentCounter++;
 			}
 		}
@@ -88,7 +92,7 @@ public class ObligRegister {
 		int indeks = 0;
 
 		for (Student s : this.studenter) {
-			if (s.getKlasse() == klasse) {
+			if (klasse.equals(s.getKlasse())) {
 				resultat[indeks] = s.toString();
 				indeks++;
 			}
