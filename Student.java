@@ -6,17 +6,22 @@
  * Per Erik Finstad <s189138@stud.hioa.no>
  * Even Holthe <s189124@stud.hioa.no>
  */
+
+import javax.swing.*;
+
 public class Student {
 	// Datafelter
 	private String navn;
 	private String klasse;
 	private Oblig[] levert;
+	private int antallObliger;
 
 	// Konstruktør
 	public Student(String navn, String klasse, int antObliger){
-		this.navn   = navn;
-		this.klasse = klasse;
-		this.levert = new Oblig[antObliger];
+		this.navn          = navn;
+		this.klasse        = klasse;
+		this.antallObliger = antObliger;
+		this.levert        = new Oblig[antObliger];
 	}
 
 	// Utvidelse på eget initiativ:
@@ -32,23 +37,19 @@ public class Student {
 	}
 
 	private int erRegistrert(int nr) {
-		int resultat = -1;
-
-		for (int i = 0; i < this.levert.length; i++) {
-			if (this.levert[i].getObligNr() == nr) {
-				resultat = i;
-				break;
+		for(int i=0;i<this.levert.length;i++){
+			if( (this.levert[i] != null) && (this.levert[i].getObligNr() == nr) ){
+				return i;
 			}
 		}
-
-		return resultat;
+		return -1;
 	}
 
 	public void innlevering(Oblig oppg){
 		// Hvis levert tidligere
-		if((erRegistrert(oppg.getObligNr()) != -1)){
+		if((this.erRegistrert(oppg.getObligNr()) != -1)){
 			// Erstatt oppgaven hvis den ikke var godkjent
-			int obligNr = erRegistrert(oppg.getObligNr());
+			int obligNr = this.erRegistrert(oppg.getObligNr());
 			if(!this.levert[obligNr].getGodkjent()){
 				this.levert[obligNr] = oppg;
 			}
@@ -62,7 +63,12 @@ public class Student {
 				}
 			}
 			// Lagre
-			this.levert[teller+1] = oppg;
+			if(teller > this.levert.length-1){
+				JOptionPane.showMessageDialog(null, "Du kan ikke levere en oblig som ikke eksisterer!", "Feil!", JOptionPane.ERROR_MESSAGE);
+			} else {
+				this.levert[teller] = oppg;	
+			}
+			
 		}
 	}
 
@@ -80,6 +86,7 @@ public class Student {
 
 	public String toString() {
 		int manglende = 0;
+		int sjekket   = 0;
 		String output = "";
 
 		output += "Navn: " + this.navn + "\n";
@@ -88,27 +95,28 @@ public class Student {
 		for (int i = 0; i < this.levert.length; i++) {
 			String status = "";
 
-			if (this.levert[i].getGodkjent()) {
-				status = "godkjent";
-			}
-
-			else {
-				status = "ikke godkjent";
-				manglende++;
-			}
-
-			output += "Obligatorisk oppgave nr. " + this.levert[i].getObligNr() + " er " + status + "\n";
+			if(this.levert[i] != null){
+				if (this.levert[i].getGodkjent()) {
+					status = "godkjent";
+				} else {
+					status = "ikke godkjent";
+					manglende++;
+				}
+				output += "Obligatorisk oppgave nr. " + this.levert[i].getObligNr() + " er " + status + "\n";
+				sjekket++;
+			} 
+			
 		}
 
 		if (manglende > 0) {
 			output += navn + " kan ikke gå opp til eksamen. Mangler " + manglende + " oppgaver for å gå opp.";
-		}
-
-		else {
+		} else if(manglende == 0 && this.antallObliger > sjekket){
+			output += navn + " mangler "+(this.antallObliger-sjekket)+" obliger, men er på god vei...";
+		} else {
 			output += navn + " kan gå opp til eksamen.";
 		}
 
-		return output;
+		return output+"\n\n";
 
 	}
 
