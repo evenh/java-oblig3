@@ -1,6 +1,7 @@
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+import java.util.ArrayList;
 
 public class ArbeidskravGUI extends JFrame implements ActionListener {
 
@@ -96,7 +97,21 @@ public class ArbeidskravGUI extends JFrame implements ActionListener {
 
 
 	private Gruppemedlem[] lesGruppe() {
+		String klasse = kl.getText();
+		ArrayList<Student> studenter = this.kartotek.getStudenter();
+		Gruppemedlem[] resultat = new Gruppemedlem[this.kartotek.getStudenter().size()];
+		int indeks = 0;
 
+		for (Student s : studenter) {
+			if (s.getKlasse() == klasse) {
+				String studentNavn = s.getNavn();
+				String studentKlasse = s.getKlasse();
+				resultat[indeks] = new Gruppemedlem(studentNavn, studentKlasse);
+				indeks++;
+			}
+		}
+
+		return resultat;	
 	}
 
 	public void registrer() {
