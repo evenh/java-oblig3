@@ -1,0 +1,19 @@
+<project>
+	<target name="clean">
+		<delete dir="build"/>
+	</target>
+
+	<target name="compile">
+		<mkdir dir="build/classes"/>
+		<javac srcdir="." destdir="build/classes" encoding="utf-8"/>
+	</target>
+
+	<target name="jar">
+		<mkdir dir="build/jar"/>
+		<jar destfile="build/jar/Arbeidskrav.jar" basedir="build/classes">
+			<manifest>
+				<attribute name="Main-Class" value="ArbeidskravDriver"/>
+			</manifest>
+		</jar>
+	</target>
+</project>
