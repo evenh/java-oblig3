@@ -132,7 +132,13 @@ public class ArbeidskravGUI extends JFrame implements ActionListener {
 	}
 
 	public void skrivListe() {
+		String sjekkKlasse = this.kl.getText();
 
+		for (Student s : this.kartotek.getStudenter()) {
+			if (s.getKlasse() == sjekkKlasse) {
+				this.output.append(s.toString());
+			}
+		}
 	}
 
 	public void actionPerformed(ActionEvent e) {
