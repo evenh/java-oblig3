@@ -116,7 +116,19 @@ public class ArbeidskravGUI extends JFrame implements ActionListener {
 	}
 
 	public void sjekkGodkjenning() {
+		String sjekkNavn = this.person.getText();
+		boolean funnet = false;
 
+		for (Student s : this.kartotek.getStudenter()) {
+			if (s.getNavn() == sjekkNavn) {
+				this.output.append(s.toString());
+				funnet = true;
+			}
+		}
+
+		if (!funnet) {
+			this.output.append("Beklager, studenten ble ikke funnet.");
+		}
 	}
 
 	public void skrivListe() {
