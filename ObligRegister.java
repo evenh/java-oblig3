@@ -23,6 +23,11 @@ public class ObligRegister {
 		this.antallObliger = antOblig;
 	}
 
+	// Hjelpemetode for ArbeidskravGUI.lesGruppe()
+	public ArrayList<Student> getStudenter() {
+		return this.studenter;
+	}
+
 	public void nyStudent(Student ny) {
 		studenter.add(ny);
 	}
