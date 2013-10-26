@@ -9,7 +9,11 @@
 
 import java.util.ArrayList;
 
-public class ObligRegister{
+public class ObligRegister {
+	// https://github.com/evenh/java-oblig3/issues/21
+	// 
+	// Gått fra Array til ArrayList, da det ikke er mulig
+	// å "ta høyde" (oppgaveteksten) for at det er plass i et array
 	private ArrayList<Student> studenter;
 	private int antallObliger;
 
@@ -23,13 +27,23 @@ public class ObligRegister{
 		studenter.add(ny);
 	}
 
+	public int posisjon(String navn){
+		int teller = 0;
+		for(Student s : this.studenter){
+			if(s.getNavn() == navn){
+				return teller;
+			} else {
+				teller++;
+			}
+		}
+	}
 
 	public void registrer(Oblig oppg) {
 		for (int i = 0; i < oppg.getDeltakere().length; i++) {
 			String navn = oppg.getDeltakere()[i].getNavn();
 			boolean finnes = false;
 
-			for (Student s: studenter) {
+			for (Student s : this.studenter) {
 				if (s.getNavn() == navn) {
 					s.innlevering(oppg);
 					finnes = true;
@@ -45,7 +59,7 @@ public class ObligRegister{
 	}
 
 	public String godkjent(String navn) {
-		for (Student s : studenter) {
+		for (Student s : this.studenter) {
 			if (s.getNavn() == navn) {
 				return s.toString();
 			}
